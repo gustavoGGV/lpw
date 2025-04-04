@@ -9,9 +9,9 @@ function desenhaBotao($infoBotao){
 
     $links = $infoBotao['Link'];
 
-    echo '<span><img src="' . $links[0]->getLinkImg() . '" width="20" height="20">' . $links[0]->getInfo() . '</span>';
-    echo '<span><img src="' . $links[1]->getLinkImg() . '" width="20" height="20">' . $links[1]->getInfo() . '</span>';
-    echo '<span><img src="' . $links[2]->getLinkImg() . '" width="20" height="20">' . $links[2]->getInfo() . '</span>';
+    foreach($links as $link) {
+        echo '<span><img src="' . $link->getLinkImg() . '" width="20" height="20">' . $link->getInfo() . '</span>';
+    }
     echo '</div>';
     echo '</div>';
 } 

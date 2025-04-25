@@ -1,0 +1,10 @@
+* {
+  color: white;
+  margin: 20px;
+  background-color: black;
+}
+
+img {
+  border: 8px solid gold;
+  border-radius: 20px;
+}

@@ -2,6 +2,12 @@
 require_once("util/Conexao.php");
 
 $conn = Conexao::getConexao();
+
+$sql = "SELECT * FROM livros";
+$stm = $conn->prepare($sql);
+$stm->execute();
+$livros = $stm->fetchAll();
+
 if(isset($_POST["titulo"])) {
     $titulo = $_POST["titulo"];
     $genero = $_POST["genero"];
@@ -25,6 +31,34 @@ if(isset($_POST["titulo"])) {
 </head>
 <body>
     <h1>Listagem</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Gênero</th>
+            <th>Qtd. de páginas</th>
+        </tr>
+<?php
+foreach($livros as $livro):
+?>
+    <tr>
+        <td>
+            <?= $livro["id"];?>
+        </td>
+        <td>
+            <?= $livro["titulo"];?>
+        </td>
+        <td>
+            <?= $livro["genero"];?>
+        </td>
+        <td>
+            <?= $livro["qtd_paginas"];?>
+        </td>
+    </tr>
+<?php
+endforeach;
+?>
+    </table>
     <h1>Formulário</h1>
     <form action="" method="POST">
         <div>
